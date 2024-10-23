@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping
 class LottoController(val lottoService: LottoService) {
     @GetMapping("/lotto/numbers")
     fun generateNumbers(model:Model): String{
-        model.addAttribute("numbers",lottoService.getLuckyNumbers())
+        val lottoNumber = lottoService.getLuckyNumbers()
+        model.addAttribute("numbers",lottoNumber?.numbers)
         return "lotto"
     }
 }
